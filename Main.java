@@ -37,7 +37,6 @@ public class Main extends ListenerAdapter
 				List<Message> history = e.getChannel().getHistoryBefore(lastMessageId, 100).complete().getRetrievedHistory();
 				lastMessageId = history.get(history.size() - 1).getIdLong();
 				history.forEach((m) -> processMessage(ec, m));
-				System.out.println("Processed one set");
 			}
 			e.getMessage().getChannel().sendMessage(ec.getMembers()).queue();
 		}
