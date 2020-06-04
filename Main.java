@@ -1,6 +1,9 @@
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 import javax.security.auth.login.LoginException;
 
@@ -18,7 +21,18 @@ public class Main extends ListenerAdapter
 
 	public Main() throws LoginException, InterruptedException
 	{
-		new JDABuilder("token").addEventListeners(this).build();
+		String token = "";
+		try
+		{
+			Scanner scanner = new Scanner(new File("token.txt"));
+			token = scanner.nextLine();
+		}
+		catch (Exception e)
+		{
+			System.out.println("Token couldn't be loaded");
+			return;
+		}
+		new JDABuilder(token).addEventListeners(this).build();
 	}
 
 	@Override
