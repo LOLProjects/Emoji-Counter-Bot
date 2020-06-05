@@ -1,0 +1,2 @@
+Main-Class: Main
+Class-Path: JDA.jar slf4j-simple-1.7.9.jar
